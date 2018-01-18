@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
+{% block title %}About Rango{% endblock %}
+{% block maincontent %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rango's About Page</title>
-</head>
-<body>
     <h1>This tutorial has been created by Anguel Hristozov.</h1>
     <p>Hi there. <a href='/rango/'>Go back home partner</a></p>
-
     <img src="{{ MEDIA_URL }}cat.jpg" alt="picture of Rango" />
-</body>
-</html>
+
+{% endblock %}
