@@ -1,10 +1,10 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.contrib.staticfiles import finders
-
 # Thanks to Enzo Roiz https://github.com/enzoroiz who made these tests during an internship with us
 
-class GeneralTests(TestCase):
+
+class GeneralTests(TestCase):  # good
     def test_serving_static_files(self):
         # If using static media properly result is not NONE once it finds rango.jpg
         result = finders.find('images/rango.jpg')
@@ -13,25 +13,25 @@ class GeneralTests(TestCase):
 
 class IndexPageTests(TestCase):
 
-    def test_index_contains_hello_message(self):
+    def test_index_contains_hello_message(self):  # good
         # Check if there is the message 'Rango Says'
         # Chapter 4
         response = self.client.get(reverse('index'))
         self.assertIn(b'Rango says', response.content)
 
-    def test_index_using_template(self):
+    def test_index_using_template(self):  # good
         # Check the template used to render index page
         # Chapter 4
         response = self.client.get(reverse('index'))
         self.assertTemplateUsed(response, 'rango/index.html')
 
-    def test_rango_picture_displayed(self):
+    def test_rango_picture_displayed(self):  # good
         # Check if is there an image called 'rango.jpg' on the index page
         # Chapter 4
         response = self.client.get(reverse('index'))
         self.assertIn(b'img src="/static/images/rango.jpg', response.content)
 
-    def test_index_has_title(self):
+    def test_index_has_title(self):  # good
         # Check to make sure that the title tag has been used
         # And that the template contains the HTML from Chapter 4
         response = self.client.get(reverse('index'))
@@ -41,19 +41,19 @@ class IndexPageTests(TestCase):
 
 class AboutPageTests(TestCase):
 
-    def test_about_contains_create_message(self):
+    def test_about_contains_create_message(self):  # good
         # Check if in the about page is there - and contains the specified message
         # Exercise from Chapter 4
         response = self.client.get(reverse('about'))
         self.assertIn(b'This tutorial has been put together by', response.content)
 
-    def test_about_contain_image(self):
+    def test_about_contain_image(self):  # good
         # Check if is there an image on the about page
         # Chapter 4
         response = self.client.get(reverse('about'))
         self.assertIn(b'img src="/media/', response.content)
 
-    def test_about_using_template(self):
+    def test_about_using_template(self):  # good
         # Check the template used to render index page
         # Exercise from Chapter 4
         response = self.client.get(reverse('about'))
@@ -65,7 +65,7 @@ class ModelTests(TestCase):
 
     def setUp(self):
         try:
-            from populate_rango import populate
+            from populate_rango import populate  # good
             populate()
         except ImportError:
             print('The module populate_rango does not exist')
@@ -100,12 +100,12 @@ class Chapter4ViewTests(TestCase):
     def test_index_contains_hello_message(self):
         # Check if there is the message 'hello world!'
         response = self.client.get(reverse('index'))
-        self.assertIn('Rango says', response.content)
+        self.assertIn(b'Rango says', response.content)
 
     def test_does_index_contain_img(self):
         # Check if the index page contains an img
         response = self.client.get(reverse('index'))
-        self.assertIn('img', response.content)
+        self.assertIn(b'img', response.content)
 
     def test_about_using_template(self):
         # Check the template used to render index page
@@ -117,12 +117,12 @@ class Chapter4ViewTests(TestCase):
     def test_does_about_contain_img(self):
         # Check if in the about page contains an image
         response = self.client.get(reverse('about'))
-        self.assertIn('img', response.content)
+        self.assertIn(b'img', response.content)
 
     def test_about_contains_create_message(self):
         # Check if in the about page contains the message from the exercise
         response = self.client.get(reverse('about'))
-        self.assertIn('This tutorial has been put together by', response.content)
+        self.assertIn(b'This tutorial has been put together by', response.content)
 
 
 class Chapter5ViewTests(TestCase):
@@ -164,8 +164,8 @@ class Chapter5ViewTests(TestCase):
         response = self.client.get(reverse('index'))
 
         # Check title used correctly
-        self.assertIn('<title>', response.content)
-        self.assertIn('</title>', response.content)
+        self.assertIn(b'<title>', response.content)
+        self.assertIn(b'</title>', response.content)
 
     # Need to add tests to:
     # check admin interface - is it configured and set up

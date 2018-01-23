@@ -3,8 +3,11 @@
 {% block title %}Rango Index{% endblock %}
 {% block maincontent %}
 
-    <p>Hi there. <a href='/rango/about/'>About page</a></p>
-    <strong>{{ boldmessage }}</strong>
-    <img src="{% static "images/rango.jpg" %}" alt="picture of Rango" />
+    <h1>Rango says...</h1><br>
+    <div>
+        <p>Hello World! <a href='/rango/about/'>About page</a></p><br>
+        <strong>{{ boldmessage }}</strong><br>
+        <img src="{% static "images/rango.jpg" %}" alt="picture of Rango"/>
+    </div>
 
 {% endblock %}
