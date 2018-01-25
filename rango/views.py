@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from rango.models import Category
 
 
 def index(request):
-    context = {
-        'boldmessage': 'Crunchy creamy cupcake yo'
+    category_list = Category.objects.order_by('-likes')[:5]
+    context_dict = {
+        'categories': category_list,
+        'boldmessage': ''
     }
-    return render(request, 'rango/index.html', context=context)
+    return render(request, 'rango/index.html', context=context_dict)
 
 
 def about(request):

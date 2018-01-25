@@ -1,9 +1,23 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
-{% block title %}Rango Index{% endblock %}
+{% block title %}Rango{% endblock %}
 {% block maincontent %}
 
     <h1>Rango says...</h1><br>
+    <div>Hey there partner!</div>
+
+    <div>
+        {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li>{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+    </div>
+
     <div>
         <p>Hello World! <a href='/rango/about/'>About page</a></p><br>
         <strong>{{ boldmessage }}</strong><br>
