@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+{% load rango_template_tags %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -6,13 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{% block title %}{% endblock %}</title>
-
+    <title>{% block title_block %}
+        How to Tango with Django!
+    {% endblock %}</title>
 
 </head>
 <body>
-    {% block maincontent %}
-
-    {% endblock %}
+    <div>
+        {% block body_block %}
+        {% endblock %}
+    </div>
+    <hr/>
+    <div>
+        {% block sidebar_block %}
+            {% get_category_list category %}
+        {% endblock %}
+    </div>
 </body>
 </html>

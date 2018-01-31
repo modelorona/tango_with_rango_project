@@ -1,10 +1,9 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
-{% block title %}About Rango{% endblock %}
-{% block maincontent %}
+{% block title_block %}About Rango{% endblock %}
+{% block body_block %}
 
     <h1>{{ boldmessage }}</h1>
-    <p>Hi there. <a href='/rango/'>Go back home partner</a></p>
     <img src="{{ MEDIA_URL }}cat.jpg" alt="picture of a cat" />
 
 {% endblock %}
