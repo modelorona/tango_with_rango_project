@@ -19,6 +19,9 @@
         {% endif %}
     </div>
 
+    {% if category %}
+        <a href="/rango/category/{{ category.slug }}/add_page/">Add Page</a><br/>
+    {% endif %}
     <a href="/rango/">Go back to the home page.</a>
 
 
