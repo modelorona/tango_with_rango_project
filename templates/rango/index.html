@@ -10,7 +10,7 @@
         {% if categories %}
         <ul>
             {% for category in categories %}
-                <li>{{ category.name }}</li>
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
             {% endfor %}
         </ul>
         {% else %}
@@ -18,10 +18,25 @@
         {% endif %}
     </div>
 
+    <h3>Most Viewed Pages</h3>
+    <div>
+    {% if pages %}
+    <ul>
+        {% for page in pages %}
+            <li>
+                <a href="{{ page.url }}">{{ page.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <strong>There are no pages available.</strong>
+    {% endif %}
+    </div>
+
     <div>
         <p>Hello World! <a href='/rango/about/'>About page</a></p><br>
         <strong>{{ boldmessage }}</strong><br>
-        <img src="{% static "images/rango.jpg" %}" alt="picture of Rango"/>
+        <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango"/>
     </div>
 
 {% endblock %}
